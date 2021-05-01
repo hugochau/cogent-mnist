@@ -1,0 +1,20 @@
+data augmentation ?
+data expansion ?
+
+
+
+load data ok
+print image ok
+parse args ok
+get space betw. stacked images ok
+get random mnist image for given sequence of digits ok
+return stacked image ok
+
+
+missing:
+check if spacing betw. min and max spacing ok
+docker ok
+float32 conversion
+logging ok
+README
+comments (incl sources)

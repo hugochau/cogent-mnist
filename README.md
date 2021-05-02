@@ -2,7 +2,7 @@
 
 Cogent MNIST is a Python application for generating MNIST digits sequences.
 
-Code source repository on [GitHub] (https://github.com/hugochau/cogent-mnist)
+Code source repository on [GitHub](https://github.com/hugochau/cogent-mnist)
 
 ## Prerequisite
 

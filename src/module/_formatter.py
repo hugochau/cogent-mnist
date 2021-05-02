@@ -6,7 +6,7 @@ functions outside of their original location
 """
 
 
-__version__ = '0.1'
+__version__ = '1.0'
 __author__ = 'Hugo Chauvary'
 __email__ = 'chauvary.hugo@gmail.com'
 

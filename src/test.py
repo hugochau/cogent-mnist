@@ -5,9 +5,12 @@ Implements testing functions
 """
 
 
-__version__ = '0.1'
+__version__ = '1.0'
 __author__ = 'Hugo Chauvary'
 __email__ = 'chauvary.hugo@gmail.com'
+
+import sys
+print(sys.path)
 
 from module import *
 from util.util import *
@@ -106,4 +109,5 @@ def test_npy_load():
 
 
 if __name__ == '__main__':
-    test_npy_load()
+
+    test_loader_load_mnist()

@@ -1,9 +1,11 @@
 """
 main.py
+
+Defines Cogent MNIST API and CLI script
 """
 
 
-__version__ = '0.1'
+__version__ = '1.0'
 __author__ = 'Hugo Chauvary'
 __email__ = 'chauvary.hugo@gmail.com'
 
@@ -45,14 +47,14 @@ def generate_numbers_sequence(digits, spacing_range, image_width):
                           image_width,
                           spacing_range[0])
 
-    # generate image
+    # generate and return image
     gen = Generator(digits, spacing, image_width)
     image = gen.generate()
 
     return image
 
 
-@log_item
+@log_item # log decorator
 def main():
     """
     Main function for the cogentmnist app

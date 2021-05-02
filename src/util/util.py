@@ -5,7 +5,7 @@ Implements util functions
 """
 
 
-__version__ = '0.1'
+__version__ = '1.0'
 __author__ = 'Hugo Chauvary'
 __email__ = 'chauvary.hugo@gmail.com'
 
@@ -14,6 +14,7 @@ import os
 import functools
 from random import choice
 from inspect import getframeinfo, stack
+
 import numpy as np
 
 from module.logger import Logger
@@ -37,16 +38,6 @@ def log_item(func):
     def wrapper(*args, **kwargs):
         logger = Logger().logger # get a logger
 
-        # # creating a list of positional args
-        # # repr() is similar but more precise than str()
-        # args_str = [repr(a) for a in args]
-        # # creating a list of keyword args
-        # # f-string formats each arg as key=value
-        # # where the !r specifier means that repr()
-        # # is used to represent the value
-        # kwargs_str = [f"{k}={v!r}" for k, v in kwargs.items()]
-        # basic_args = ", ".join(args_str + kwargs_str)
-
         # generate file/function name for calling functions
         # __func.name__ will give the name of the caller function
         # ie. wrapper and caller file name ie log_item.py
@@ -58,13 +49,14 @@ def log_item(func):
             'file_name_override': os.path.basename(pyfile.filename)
         }
 
+        # function begin checkpoint
         logger.info(f"begin function", extra=extra_args)
-        try:
+        try: # function end checkpoint
             value = func(*args, **kwargs)
             if value:
                 logger.info(f"end function, returned {value!r}", extra=extra_args)
             else:
-                logger.info(f"end function, no return", extra=extra_args)
+                logger.info(f"end function, success!", extra=extra_args)
 
             return value
         except:
@@ -89,10 +81,11 @@ def classify_labels(labels: np.ndarray) -> list:
     sorted_labels:
         - labels sorted by value
     """
-    #
+    # initialize with 10 empty lists (= 10 digits)
     sorted_labels = [[] for i in range(10)]
 
-    #
+    # loop through labels
+    # add their position to corresponding list
     for i in range(len(labels)):
         sorted_labels[labels[i]].append(i)
 
@@ -127,10 +120,11 @@ def get_spacing(
         - Specifies the width of the MNIST digits
         - Unit should be pixel.
     """
+    # no spacing required if digits sequence length is one
     if len(sequence) == 1:
-        theo_spacing = 0 # no spacing required in this case
+        theo_spacing = 0
     else:
-        # derived from formula
+        # derived from formula below
         # image_width = (len(sequence) * digit_width) + theo_spacing/(len(sequence) - 1)
         theo_spacing = (image_width - len(sequence) * digit_width) / (len(sequence) - 1)
 

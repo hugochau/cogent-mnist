@@ -87,28 +87,38 @@ class Generator():
             1 (white), the first dimension corresponding to the height and the second
             dimension to the width.
         """
+        # define spacing ndarray
+        # used for separating two consecutive digits
+        # TO DO dtype='float32' instead of dtype='uint8'
         spacing = np.ones(self.height * self.spacing,
                           dtype='uint8').reshape(self.height,
                                                  self.spacing)
-        spacing *= 0 # black blackround
+        # multiply by zero to get a black blackgound
+        spacing *= 0
 
+        # use classify_labels to classify labels by value
         sorted_labels = classify_labels(self.labels)
+
+        # pick random label from the mnist data
         idx = choice(sorted_labels[self.sequence[0]])
         image = self.images[idx]
 
         for i in range(1, len(self.sequence)):
+            # if not last digit add spacing between
+            # two consecutive digits
             if i < len(self.sequence):
                 image = np.hstack((image, spacing))
 
+            # pick random label from the mnist data
             idx = choice(sorted_labels[self.sequence[i]])
             image = np.hstack((image, self.images[idx]))
 
-        # remaining spacing to get actual image width
+        # add the remaining spacing to get the actual requested image width
         remain = self.width - image.shape[1]
         spacing = np.ones(self.height * remain,
                           dtype='uint8').reshape(self.height,
                                                  remain)
-        spacing *= 0 # black blackround
+        spacing *= 0
         image = np.hstack((image, spacing))
 
         return image

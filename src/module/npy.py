@@ -4,14 +4,11 @@ noy.py
 Implements Npy
 """
 
-__version__ = '0.1'
+__version__ = '1.0'
 __author__ = 'Hugo Chauvary'
 __email__ = 'chauvary.hugo@gmail.com'
 
-
 import numpy as np
-from PIL import Image
-import matplotlib.pyplot as plt
 
 from config.constant import DATA_DIR
 

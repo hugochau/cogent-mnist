@@ -4,7 +4,7 @@ parser.py
 Implements Parser
 """
 
-__version__ = '0.1'
+__version__ = '1.0'
 __author__ = 'Hugo Chauvary'
 __email__ = 'chauvary.hugo@gmail.com'
 
@@ -55,6 +55,7 @@ class Parser:
         # using util function validate_int to validate numbers
         # must be strictly positive
         dict = {}
+        # TO DO handling edge cases such as "1;2"
         dict['sequence'] = [int(item) for item in args.sequence.split(',')]
         dict['spacing_range'] = (
             validate_int(args.min_spacing),

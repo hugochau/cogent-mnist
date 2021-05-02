@@ -4,7 +4,7 @@ logger.py
 Implements Logger
 """
 
-__version__ = '0.1'
+__version__ = '1.0'
 __author__ = 'Hugo Chauvary'
 __email__ = 'chauvary.hugo@gmail.com'
 
@@ -44,7 +44,7 @@ class Logger:
     @staticmethod
     def get_logger() -> logging.Logger:
         """
-        Loads the MNIST dataset from byte-form local files into NumPy arrays
+        Builds a custom loggin.Logger object
 
         Parameters
         ----------
@@ -58,11 +58,6 @@ class Logger:
         # init logger
         logger = logging.Logger(LOG_FILENAME)
         logger.setLevel(LOG_LEVEL)
-
-        # enriching logger.record with additional content
-        # this is not being used atm but left for doc
-        # could be useful in the future
-        # logger.addFilter(Adapter(type))
 
         # setting up stream logger
         stream_logger = logging.StreamHandler()

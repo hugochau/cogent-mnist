@@ -37,5 +37,5 @@ class Png:
         # load image using PIL
         img = Image.fromarray(image, 'L')
 
-        # save as .png
+        # save as .png under data/output
         img.save(f'{DATA_DIR}/output/image.png')
